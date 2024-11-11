@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sound Effect Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Sound Effect Generator</h1>
+
+    <div class="controls">
+      <label for="exampleSelect">Choose a Game Sound Effect Example:</label>
+      <select id="exampleSelect" onchange="loadExample()">
+        <option value="">Select an example...</option>
+        <option value="laserBlast">Laser Blast</option>
+        <option value="explosion">Explosion</option>
+        <option value="footstep">Footstep</option>
+        <option value="wind">Wind</option>
+        <option value="ambientDrone">Ambient Drone</option>
+      </select>
+
+      <label for="sineFunction">Define Your Wave Function:</label>
+      <textarea id="sineFunction" rows="10" cols="50">
+// Example function
+function(index, sampleRate) {
+   return Math.sin(index / 10) * Math.exp(-index / 1000);
+}
+      </textarea>
+      
+      <label for="soundLength">Sound Length (seconds):</label>
+      <input type="number" id="soundLength" value="1" step="0.1" min="0.1">
+      
+      <label for="sampleRate">Sample Rate:</label>
+      <input type="number" id="sampleRate" value="44100" step="1000" min="8000">
+    </div>
+    
+    <button id="generate-sound">Generate Sound</button>
+    <a id="download-link" download="sound-effect.wav" style="display: none;">Download Sound</a>
+    
+    <p>Define your function, adjust settings, and click "Generate Sound" to create a custom sound effect.</p>
+  </div>
+  
+  <script src="examples.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
